@@ -2,7 +2,7 @@
 
 ## Scripts for data preparation
 
-First, obtain the Tunisian-English Speech Translation data (LDC2022E01) from LDC, following the instructions on the <a href="">shared task website</a>.
+First, obtain the Tunisian-English Speech Translation data (LDC2022E01) from LDC, following the instructions on the <a href="https://iwslt.org/2022/dialect">shared task website</a>.
 
 Then, clone this repo and run: 
 ```
