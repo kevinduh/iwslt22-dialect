@@ -59,6 +59,28 @@ text = reference Arabic for asr-aeb.*.stm and reference English for st-aeb2eng.*
 The STM files can be used as input to, for example, Kaldi ASR's data processing <a href="https://github.com/kaldi-asr/kaldi/blob/master/egs/babel/s5/local/prepare_stm.pl">scripts</a>. For MT bitext, the n-th line of `stm/asr-aeb.norm.train.stm` is sentence-aligned to the same n-th line of `stm/st-aeb2eng.norm.train.stm`, and similarly for the `*.{dev,test1}.stm` files.
 
 
-## Scripts for WER and BLEU evaluation
+## Scripts for BLEU evaluation
 
-TBA
+We will use <a href="https://github.com/mjpost/sacrebleu">SacreBLEU</a> for evaluation of speech translation output. The following shows how we would compute (lowercased) BLEU on a detokenized example output (`example/example.st.unconstrained.contrastive1.aeb-eng.txt`):
+
+```
+pip install sacrebleu==2.0.0
+cut -f 7- stm/st-aeb2eng.norm.test1.stm > example/test1.reference.eng
+sacrebleu example/test1.reference.eng -i example/example.st.unconstrained.contrastive1.aeb-eng.txt -m bleu -lc
+``` 
+
+This should give:
+```
+{
+ "name": "BLEU",
+ "score": 19.1,
+ "signature": "nrefs:1|case:lc|eff:no|tok:13a|smooth:exp|version:2.0.0",
+ "verbose_score": "50.8/26.0/13.9/7.7 (BP = 0.985 ratio = 0.985 hyp_len = 41561 ref_len = 42181)",
+ "nrefs": "1",
+ "case": "lc",
+ "eff": "no",
+ "tok": "13a",
+ "smooth": "exp",
+ "version": "2.0.0"
+}
+```
