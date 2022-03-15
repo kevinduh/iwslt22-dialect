@@ -84,3 +84,23 @@ This should give:
  "version": "2.0.0"
 }
 ```
+
+## Scripts for WER/CER evaluation
+
+We'll compute WER and CER for ASR outputs as follows, using the SCLITE tool: 
+```
+python3 ./wer_cer.py example/smallset.reference.aeb example/smallset.asr.unconstrained.contrastive1.aeb.txt tmp ~/sctk/bin/sclite
+```
+
+This should give something like the following (Note this example may not be representative of actual WER/CER because it's just a small set of 100 utterances):
+```
+example/smallset.asr.unconstrained.contrastive1.aeb.txt 15/03/2022 14:07:39
+WER on original hypothesis: #hyp_token= 600 error_rate= 37.5
+WER on additionally-normalized hypothesis: #hyp_token= 600 error_rate= 31.7
+CER on original hypothesis: #hyp_token= 3116 error_rate= 18.7
+CER on additionally-normalized hypothesis: #hyp_token= 2921 error_rate= 16.8
+```
+
+The WER/CER on "original" refers to text like `asr-aeb.norm.stm` as provided by the setup_data.sh (not the `asr-aeb.raw.stm`). 
+The WER/CER on "additionally-normalized" underwent additional normalization (not provided by setup_data.sh) and includes things like diacritic removal (see wer-cer.py for full set of additional normalization). Multiple versions are provided only as diagnostic. 
+
