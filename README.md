@@ -104,3 +104,27 @@ CER on additionally-normalized hypothesis: #hyp_token= 2921 error_rate= 16.8
 The WER/CER on "original" refers to text like `asr-aeb.norm.stm` as provided by the setup_data.sh (not the `asr-aeb.raw.stm`). 
 The WER/CER on "additionally-normalized" underwent additional normalization (not provided by setup_data.sh) and includes things like diacritic removal (see wer-cer.py for full set of additional normalization). Multiple versions are provided only as diagnostic. 
 
+## Note for IWSLT'22 Evaluation (March 23, 2022)
+
+It has come to our attention that 5 lines of the provided segments.txt file in the LDC package LDC2022E02 need to be removed from BLEU/WER evaluation. These are bad segments that correspond to zero duration or no speech:
+
+The original file `LDC2022E02/data/segments.txt` contains 4293 lines.
+Please use this new [`segments.4288lines.txt`](https://www.cs.jhu.edu/~kevinduh/t/iwslt22/segments.4288lines.txt) to decode.
+Your submission of the transcript/translation file should be 4288 lines, corresponding to this new `segments.4288lines.txt` file. 
+
+If you already decoded with the original segments file and generated transcriptions/translations with 4293 lines, please run the following script to filter out the 5 lines correspond to the bad segments:
+
+```
+python3 filter_bad_segment.py path/to/original/LDC2022E02/data/segments.txt your_file_to_filter resulting_file
+```
+
+The resulting_file should be correct with 4288 lines. The 5 lines that are filtered correspond to: 
+
+```
+'20170606_000110_13802_A_008209-008322 20170606_000110_13802_A 82.098 83.220'
+'20170606_000110_13802_A_010606-010757 20170606_000110_13802_A 106.060 107.570'
+'20170606_000110_13802_B_039745-039907 20170606_000110_13802_B 397.450 399.078'
+'20170606_000110_13802_B_053041-053104 20170606_000110_13802_B 530.410 531.040'
+'20170907_204736_16787_A_040194-040194 20170907_204736_16787_A 401.944 401.944'
+```
+
