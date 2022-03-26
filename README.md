@@ -94,11 +94,11 @@ python3 ./wer_cer.py example/smallset.reference.aeb example/smallset.asr.unconst
 
 This should give something like the following (Note this example may not be representative of actual WER/CER because it's just a small set of 100 utterances):
 ```
-example/smallset.asr.unconstrained.contrastive1.aeb.txt 15/03/2022 14:07:39
-WER on original hypothesis: #hyp_token= 600 error_rate= 37.5
-WER on additionally-normalized hypothesis: #hyp_token= 600 error_rate= 31.7
-CER on original hypothesis: #hyp_token= 3116 error_rate= 18.7
-CER on additionally-normalized hypothesis: #hyp_token= 2921 error_rate= 16.8
+example/smallset.asr.unconstrained.contrastive1.aeb.txt 25/03/2022 22:49:38
+WER on original hypothesis Error_Rate= 37.5 (#snt=100 #token=600 Corr=67.3 Sub=26.0 Del=6.7 Ins=4.8)
+WER on additionally-normalized hypothesis Error_Rate= 31.7 (#snt=100 #token=600 Corr=73.2 Sub=20.2 Del=6.7 Ins=4.8)
+CER on original hypothesis Error_Rate= 18.7 (#snt=100 #token=3116 Corr=88.1 Sub=4.7 Del=7.3 Ins=6.8)
+CER on additionally-normalized hypothesis Error_Rate= 16.8 (#snt=100 #token=2921 Corr=89.3 Sub=3.7 Del=7.1 Ins=6.1)
 ```
 
 The WER/CER on "original" refers to text like `asr-aeb.norm.stm` as provided by the setup_data.sh (not the `asr-aeb.raw.stm`). 

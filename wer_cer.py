@@ -65,14 +65,14 @@ def get_sclite_result(sclite_output_file, label):
         for line in FID:
             if line.lstrip().startswith('| Sum/Avg|'):
                 results = line.split()
-                #num_sentence = results[2]
+                num_sentence = results[2]
                 num_token = results[3]
-                #correct = results[5]
-                #substitute = results[6]
-                #deletion = results[7]
-                #insertion = results[8]
+                correct = results[5]
+                substitute = results[6]
+                deletion = results[7]
+                insertion = results[8]
                 err_rate = results[9]
-                print("%s: #hyp_token= %s error_rate= %s"%(label, num_token,err_rate))
+                print(f"{label} Error_Rate= {err_rate} (#snt={num_sentence} #token={num_token} Corr={correct} Sub={substitute} Del={deletion} Ins={insertion})")
                 break
 
 # step 1. write out files needed for sclite
