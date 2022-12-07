@@ -1,4 +1,17 @@
+This repo contains the data split and preprocessing scripts needed to replicate the IWSLT 2022 and 2023 speech translation tasks for Tunisian-Arabic to English.
+
+# IWSLT 2023 Dialectal and Low-Resource Speech Translation Task 
+
+<a href="https://iwslt.org/2023/low-resource">IWSLT 2023 task homepage</a>
+<br>
+The data setup for 2023 is identical to that of 2022, so please follow the 2022 instructions below, to generate `train`, `dev`, and `test1` data splits.
+The evaluation set for 2022 is referred to as `test2`; for 2023, a new evaluation set referred to as `test3` will be provided. 
+For consistency of comparison across years, the same BLEU evaluation setup will be used.
+
+
 # IWSLT 2022 Dialectal Speech Translation Task 
+
+<a href="https://iwslt.org/2022/dialect">IWSLT 2022 task homepage</a>
 
 ## Scripts for data preparation
 
